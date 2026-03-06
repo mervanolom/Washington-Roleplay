@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Washington Roleplay — Sokakların Dili</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Rajdhani:wght@300;400;500;600;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#020204;--dark:#07070d;--card:#0c0c14;--card2:#10101a;
+  --border:#181828;--red:#e8192c;--red2:#ff2236;
+  --gold:#c9922a;--gold2:#e8b84b;
+  --white:#f0ece4;--muted:#4a4a60;--muted2:#6a6a80;
+  --green:#16a34a;--blue:#2563eb;--discord:#5865F2;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--white);font-family:'Rajdhani',sans-serif;overflow-x:hidden;}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:9997;mix-blend-mode:overlay;opacity:.65;}
+::-webkit-scrollbar{width:2px}::-webkit-scrollbar-track{background:#000}::-webkit-scrollbar-thumb{background:var(--red)}
+
+/* GATE */
+#gate{position:fixed;inset:0;z-index:9500;display:flex;align-items:center;justify-content:center;flex-direction:column;padding:20px;text-align:center;overflow:hidden;}
+#gbg{position:absolute;inset:0;background:radial-gradient(ellipse 100% 80% at 50% 120%,rgba(232,25,44,.15) 0%,transparent 65%),url('images/hero.jpg') center/cover no-repeat;filter:brightness(.18) saturate(.5);}
+#gbg::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,.12) 3px,rgba(0,0,0,.12) 4px);}
+.gc{position:relative;z-index:2;width:100%;max-width:500px;}
+.gey{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:6px;color:var(--red);text-transform:uppercase;margin-bottom:18px;animation:fu .8s .2s both;}
+.glogo{font-family:'Anton',sans-serif;font-size:clamp(58px,13vw,108px);letter-spacing:4px;line-height:.88;margin-bottom:6px;animation:fu .8s .4s both;}
+.glogo .r{color:var(--red);text-shadow:0 0 60px rgba(232,25,44,.5);}
+.glogo .s{-webkit-text-stroke:1.5px rgba(240,236,228,.35);color:transparent;}
+.gtag{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:6px;color:var(--muted2);text-transform:uppercase;margin-bottom:40px;animation:fu .8s .6s both;}
+.gcard{background:rgba(12,12,20,.96);border:1px solid var(--border);border-top:2px solid var(--discord);padding:34px 38px;backdrop-filter:blur(20px);position:relative;animation:fu .8s .8s both;}
+.gcard::before{content:'// GİRİŞ GEREKLİ';position:absolute;top:-9px;left:50%;transform:translateX(-50%);font-family:'Share Tech Mono',monospace;font-size:8px;letter-spacing:4px;color:var(--discord);background:rgba(12,12,20,.96);padding:0 12px;}
+.gdi{font-size:38px;margin-bottom:14px;display:block;}
+.gtitle{font-family:'Anton',sans-serif;font-size:21px;letter-spacing:3px;margin-bottom:9px;}
+.gdesc{font-size:14px;font-weight:300;color:var(--muted2);line-height:1.75;margin-bottom:22px;}
+.ginp{width:100%;background:#07070d;border:1px solid var(--border);padding:13px 16px;color:var(--white);font-family:'Rajdhani',sans-serif;font-size:15px;font-weight:500;outline:none;margin-bottom:9px;transition:border-color .2s;border-radius:0;}
+.ginp:focus{border-color:var(--discord);}
+.ginp::placeholder{color:var(--muted);}
+.gerr{color:var(--red);font-family:'Share Tech Mono',monospace;font-size:11px;margin-bottom:9px;display:none;letter-spacing:1px;}
+.gbtn{width:100%;padding:14px;background:var(--discord);color:#fff;border:none;font-family:'Anton',sans-serif;font-size:16px;letter-spacing:4px;cursor:pointer;transition:all .25s;}
+.gbtn:hover{background:#4752c4;box-shadow:0 8px 28px rgba(88,101,242,.4);}
+.gnote{margin-top:16px;font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);line-height:1.9;}
+.gnote a{color:var(--discord);text-decoration:none;}
+@keyframes fu{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:900;padding:22px 56px;display:flex;align-items:center;justify-content:space-between;transition:all .35s;}
+nav.stuck{background:rgba(2,2,4,.97);padding:13px 56px;border-bottom:1px solid rgba(232,25,44,.12);backdrop-filter:blur(20px);}
+.nlogo{font-family:'Anton',sans-serif;font-size:24px;letter-spacing:5px;color:var(--white);text-decoration:none;}
+.nlogo span{color:var(--red);}
+.nlinks{display:flex;gap:32px;list-style:none;}
+.nlinks a{font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted2);text-decoration:none;transition:color .2s;position:relative;}
+.nlinks a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--red);transition:width .25s;}
+.nlinks a:hover{color:var(--white);}
+.nlinks a:hover::after{width:100%;}
+.ndcb{display:inline-flex;align-items:center;gap:8px;font-family:'Anton',sans-serif;font-size:13px;letter-spacing:3px;text-decoration:none;color:#fff;background:var(--discord);padding:10px 22px;border:none;cursor:pointer;transition:all .2s;}
+.ndcb:hover{background:#4752c4;}
+
+/* HERO */
+#hero{position:relative;height:100vh;min-height:720px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;overflow:hidden;}
+.hbg{position:absolute;inset:0;background:url('images/hero.jpg') center/cover no-repeat;filter:brightness(.25) saturate(.55) contrast(1.15);}
+.hov{position:absolute;inset:0;background:radial-gradient(ellipse 80% 50% at 50% 100%,rgba(232,25,44,.2) 0%,transparent 65%),linear-gradient(0deg,rgba(2,2,4,.96) 0%,rgba(2,2,4,.25) 40%,rgba(2,2,4,.55) 100%);}
+.hsc{position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,.07) 3px,rgba(0,0,0,.07) 4px);pointer-events:none;}
+.hvig{position:absolute;inset:0;box-shadow:inset 0 0 200px rgba(0,0,0,.95);pointer-events:none;}
+.hline{position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(to right,transparent,var(--red) 30%,var(--red) 70%,transparent);opacity:.55;}
+#pts{position:absolute;inset:0;pointer-events:none;}
+.pt{position:absolute;border-radius:50%;animation:ptU linear infinite;opacity:0;}
+@keyframes ptU{0%{transform:translateY(100vh);opacity:0}8%{opacity:1}92%{opacity:.3}100%{transform:translateY(-50px);opacity:0}}
+.hc{position:relative;z-index:2;padding:0 24px;}
+.hpre{font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:7px;color:var(--red);text-transform:uppercase;margin-bottom:22px;opacity:0;animation:hU .7s .5s forwards;}
+.htitle{font-family:'Anton',sans-serif;font-size:clamp(72px,16vw,170px);line-height:.86;letter-spacing:5px;margin-bottom:12px;opacity:0;animation:hU .7s .7s forwards;}
+.htitle .r{color:var(--red);text-shadow:0 0 100px rgba(232,25,44,.5);}
+.htitle .s{-webkit-text-stroke:2px rgba(240,236,228,.35);color:transparent;}
+.hsub{font-size:clamp(12px,1.8vw,17px);font-weight:300;letter-spacing:10px;color:var(--muted2);text-transform:uppercase;margin-bottom:50px;opacity:0;animation:hU .7s .9s forwards;}
+.hctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;opacity:0;animation:hU .7s 1.1s forwards;}
+@keyframes hU{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+.sind{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;opacity:.28;animation:bob 2.5s ease-in-out infinite;}
+.sind span{font-family:'Share Tech Mono',monospace;font-size:8px;letter-spacing:4px;color:var(--muted);}
+.sline{width:1px;height:40px;background:linear-gradient(var(--red),transparent);}
+@keyframes bob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(9px)}}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:9px;font-family:'Anton',sans-serif;font-size:13px;letter-spacing:4px;text-transform:uppercase;text-decoration:none;padding:15px 36px;border:none;cursor:pointer;transition:all .25s;position:relative;overflow:hidden;}
+.btn::after{content:'';position:absolute;inset:0;background:rgba(255,255,255,.09);transform:translateX(-101%);transition:transform .3s;}
+.btn:hover::after{transform:translateX(0);}
+.btn-red{background:var(--red);color:#fff;}
+.btn-red:hover{background:var(--red2);box-shadow:0 0 40px rgba(232,25,44,.5);transform:translateY(-2px);}
+.btn-ghost{background:transparent;color:var(--white);border:1px solid rgba(240,236,228,.18);}
+.btn-ghost:hover{border-color:rgba(240,236,228,.5);}
+.btn-dc{background:var(--discord);color:#fff;}
+.btn-dc:hover{background:#4752c4;box-shadow:0 0 30px rgba(88,101,242,.4);transform:translateY(-2px);}
+
+/* STATS */
+.stats{background:var(--dark);border-top:1px solid rgba(232,25,44,.15);border-bottom:1px solid rgba(232,25,44,.15);padding:28px 56px;display:flex;justify-content:space-around;flex-wrap:wrap;gap:18px;}
+.stat{text-align:center;}
+.sn{font-family:'Anton',sans-serif;font-size:50px;color:var(--red);line-height:1;letter-spacing:2px;}
+.sl{font-size:10px;letter-spacing:4px;color:var(--muted2);text-transform:uppercase;margin-top:3px;font-weight:600;}
+
+/* TICKER */
+.ticker{background:var(--red);overflow:hidden;padding:10px 0;}
+.tkr{display:inline-block;white-space:nowrap;animation:tick 38s linear infinite;font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:4px;color:#fff;}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* SECTION */
+.sec{padding:96px 56px;max-width:1200px;margin:0 auto;}
+.sdf{padding:96px 56px;max-width:100%;margin:0;background:var(--dark);}
+.slbl{display:flex;align-items:center;gap:14px;font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:5px;color:var(--red);text-transform:uppercase;margin-bottom:12px;}
+.slbl::before{content:'';width:28px;height:1px;background:var(--red);}
+.stit{font-family:'Anton',sans-serif;font-size:clamp(42px,6.5vw,80px);line-height:.9;letter-spacing:2px;margin-bottom:20px;}
+.stit .hl{color:var(--red);}
+
+/* ABOUT */
+.ag{display:grid;grid-template-columns:1.1fr 1fr;gap:60px;align-items:center;}
+.at p{font-size:17px;font-weight:300;line-height:1.9;color:rgba(240,236,228,.65);margin-bottom:14px;}
+.at p strong{color:var(--white);font-weight:600;}
+.at p em{color:var(--red);font-style:normal;font-weight:600;}
+.pq{border-left:3px solid var(--red);padding:16px 24px;background:rgba(232,25,44,.04);font-size:19px;font-weight:600;line-height:1.55;margin:24px 0;color:var(--white);font-style:italic;}
+.aimg{position:relative;overflow:hidden;}
+.aimg img{width:100%;height:320px;object-fit:cover;filter:brightness(.7) saturate(.65) contrast(1.1);display:block;transition:filter .4s;}
+.aimg:hover img{filter:brightness(.82) saturate(.82);}
+.aiov{position:absolute;inset:0;background:linear-gradient(transparent 55%,rgba(2,2,4,.92) 100%);pointer-events:none;}
+.ailbl{position:absolute;bottom:0;left:0;right:0;padding:16px 20px;}
+.ait{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--red);margin-bottom:4px;}
+.ain{font-family:'Anton',sans-serif;font-size:20px;letter-spacing:3px;}
+
+/* GALLERY */
+.gg{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-top:48px;}
+.gi{position:relative;overflow:hidden;aspect-ratio:16/10;background:var(--card);cursor:pointer;}
+.gi img{width:100%;height:100%;object-fit:cover;filter:brightness(.55) saturate(.6) contrast(1.1);transition:transform .5s,filter .4s;}
+.gi:hover img{transform:scale(1.07);filter:brightness(.75) saturate(.85) contrast(1.05);}
+.gov{position:absolute;inset:0;background:linear-gradient(transparent 35%,rgba(2,2,4,.88) 100%);opacity:.65;transition:opacity .3s;}
+.gi:hover .gov{opacity:1;}
+.glbl{position:absolute;bottom:0;left:0;right:0;padding:14px 16px;transform:translateY(5px);transition:transform .3s;}
+.gi:hover .glbl{transform:translateY(0);}
+.gt{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--red);margin-bottom:3px;}
+.gn{font-family:'Anton',sans-serif;font-size:16px;letter-spacing:2px;}
+
+/* VEHICLES */
+.vg{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:48px;}
+.vc{background:var(--card);border:1px solid var(--border);overflow:hidden;transition:all .3s;}
+.vc:hover{border-color:rgba(232,25,44,.4);transform:translateY(-3px);}
+.vi{height:210px;overflow:hidden;position:relative;}
+.vi img{width:100%;height:100%;object-fit:cover;filter:brightness(.6) saturate(.65) contrast(1.1);transition:transform .5s,filter .4s;}
+.vc:hover .vi img{transform:scale(1.05);filter:brightness(.78) saturate(.88);}
+.viov{position:absolute;inset:0;background:linear-gradient(transparent 40%,rgba(2,2,4,.65) 100%);}
+.vinfo{padding:18px 20px;}
+.vbr{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--red);margin-bottom:4px;}
+.vnm{font-family:'Anton',sans-serif;font-size:21px;letter-spacing:3px;margin-bottom:6px;}
+.vds{font-size:13px;color:var(--muted2);line-height:1.65;}
+.vtgs{display:flex;gap:5px;flex-wrap:wrap;margin-top:9px;}
+.vtg{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:1px;padding:3px 7px;border:1px solid var(--border);color:var(--muted2);}
+
+/* WEAPONS */
+.wg{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:48px;}
+.wc{background:var(--card);overflow:hidden;transition:all .25s;border-bottom:2px solid transparent;}
+.wc:hover{background:var(--card2);border-bottom-color:var(--red);}
+.wim{height:140px;overflow:hidden;position:relative;}
+.wim img{width:100%;height:100%;object-fit:cover;filter:brightness(.45) saturate(.35) contrast(1.25);transition:filter .4s;}
+.wc:hover .wim img{filter:brightness(.65) saturate(.6) contrast(1.15);}
+.wimov{position:absolute;inset:0;background:linear-gradient(transparent 30%,rgba(2,2,4,.75) 100%);}
+.wb{padding:16px 16px 20px;}
+.wnm{font-family:'Anton',sans-serif;font-size:18px;letter-spacing:2px;margin-bottom:4px;}
+.wtp{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--red);margin-bottom:7px;}
+.wds{font-size:12px;color:var(--muted2);line-height:1.6;}
+.wlg{display:inline-block;margin-top:9px;font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:2px;padding:3px 8px;}
+.ly{background:rgba(22,163,74,.1);color:#4ade80;border:1px solid rgba(22,163,74,.3);}
+.ln{background:rgba(232,25,44,.1);color:var(--red);border:1px solid rgba(232,25,44,.3);}
+
+/* ILLEGAL */
+.igr{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:48px;}
+.ic{background:var(--card);padding:24px 14px;text-align:center;border-bottom:2px solid transparent;transition:all .25s;}
+.ic:hover{background:var(--card2);border-bottom-color:var(--red);}
+.ici{font-size:34px;margin-bottom:9px;display:block;}
+.icn{font-family:'Anton',sans-serif;font-size:17px;letter-spacing:2px;margin-bottom:4px;}
+.icr{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--red);margin-bottom:8px;}
+.icb{height:2px;background:var(--border);position:relative;}
+.icb::after{content:'';position:absolute;left:0;top:0;bottom:0;background:var(--red);width:var(--r);transition:width .6s .2s;}
+
+/* FACTIONS */
+.fg{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:48px;}
+.fc{background:var(--card);border:1px solid var(--border);padding:28px 22px;position:relative;overflow:hidden;transition:all .3s;}
+.fc:hover{border-color:rgba(232,25,44,.35);transform:translateY(-3px);}
+.fe{font-size:40px;margin-bottom:12px;display:block;}
+.fn{font-family:'Anton',sans-serif;font-size:24px;letter-spacing:3px;margin-bottom:4px;}
+/* GANG NAME — italic gradient */
+.gname{
+  font-family:'Anton',sans-serif;
+  font-style:italic;
+  font-size:34px;letter-spacing:3px;margin-bottom:4px;
+  background:linear-gradient(135deg,var(--red) 0%,var(--gold2) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.gnameZ{
+  font-family:'Anton',sans-serif;
+  font-style:italic;
+  font-size:34px;letter-spacing:3px;margin-bottom:4px;
+  background:linear-gradient(135deg,var(--gold) 0%,var(--gold2) 60%,#fff 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.ftp{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:2px;margin-bottom:11px;}
+.ftp.cr{color:var(--red);}
+.ftp.lw{color:var(--blue);}
+.ftp.cv{color:var(--green);}
+.ftp.gn{color:var(--gold);}
+.fds{font-size:13px;color:var(--muted2);line-height:1.7;}
+.fsl{margin-top:12px;font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--muted);display:flex;align-items:center;gap:5px;flex-wrap:wrap;}
+.sd{width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block;}
+.sd.f{background:var(--red);}
+/* Gang capacity */
+.gcb{margin-top:12px;}
+.gcbl{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);margin-bottom:4px;}
+.gcbr{height:2px;background:var(--border);position:relative;}
+.gcbf{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(to right,var(--red),var(--gold2));transition:width .9s .3s;}
+/* Gang card special bg */
+.fc.gang-card{background:linear-gradient(135deg,#0e0810 0%,#0c0c14 100%);border-color:rgba(232,25,44,.22);}
+.fc.gang-card:hover{border-color:rgba(232,25,44,.55);}
+.fc.gangZ{background:linear-gradient(135deg,#0e0c08 0%,#0c0c14 100%);border-color:rgba(201,146,42,.2);}
+.fc.gangZ:hover{border-color:rgba(232,184,75,.5);}
+.gtop-line{position:absolute;top:0;left:0;right:0;height:2px;}
+
+/* RULES */
+.rg{display:grid;grid-template-columns:1fr 1fr;gap:44px;margin-top:48px;}
+.rch{font-family:'Anton',sans-serif;font-size:24px;letter-spacing:3px;margin-bottom:20px;display:flex;align-items:center;gap:10px;}
+.rch.y{color:#4ade80;}.rch.n{color:var(--red);}
+.rr{display:flex;gap:12px;align-items:flex-start;padding:11px 13px;background:var(--card);border:1px solid var(--border);margin-bottom:6px;font-size:14px;font-weight:400;color:rgba(240,236,228,.7);line-height:1.55;transition:border-color .2s;}
+.rr:hover{border-color:rgba(232,25,44,.2);}
+.ri2{font-size:14px;flex-shrink:0;margin-top:1px;}
+
+/* JOIN */
+.jg{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:48px;counter-reset:j;}
+.js{background:var(--card);padding:28px 20px;position:relative;counter-increment:j;}
+.js::before{content:counter(j,decimal-leading-zero);font-family:'Anton',sans-serif;font-size:62px;color:rgba(232,25,44,.05);position:absolute;top:10px;right:12px;line-height:1;}
+.ji{font-size:26px;margin-bottom:14px;display:block;}
+.jt{font-family:'Anton',sans-serif;font-size:18px;letter-spacing:2px;margin-bottom:6px;}
+.jd{font-size:13px;color:var(--muted2);line-height:1.65;}
+
+/* DISCORD SEC */
+.dcs{background:linear-gradient(135deg,#07070f,#0a0b1c,#070710);border-top:1px solid rgba(88,101,242,.18);border-bottom:1px solid rgba(88,101,242,.18);padding:96px 56px;max-width:100%;margin:0;text-align:center;position:relative;overflow:hidden;}
+.dcs::before{content:'DISCORD';font-family:'Anton',sans-serif;font-size:250px;color:rgba(88,101,242,.025);position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);pointer-events:none;white-space:nowrap;letter-spacing:15px;}
+.dci{position:relative;z-index:1;max-width:700px;margin:0 auto;}
+.dcbdg{display:inline-flex;align-items:center;gap:9px;background:rgba(88,101,242,.12);border:1px solid rgba(88,101,242,.3);color:#7289da;font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:4px;padding:7px 18px;margin-bottom:20px;}
+.dcbdg::before{content:'●';animation:pls 2s infinite;}
+@keyframes pls{0%,100%{opacity:1}50%{opacity:.3}}
+.dctit{font-family:'Anton',sans-serif;font-size:clamp(36px,5.5vw,66px);letter-spacing:3px;line-height:.92;margin-bottom:14px;}
+.dctit span{color:#5865F2;}
+.dcdesc{font-size:16px;font-weight:300;color:var(--muted2);line-height:1.85;margin-bottom:30px;max-width:500px;margin-left:auto;margin-right:auto;}
+.dcfs{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:30px;}
+.dcf{background:rgba(88,101,242,.07);border:1px solid rgba(88,101,242,.18);padding:8px 16px;font-size:12px;font-weight:600;letter-spacing:2px;color:rgba(240,236,228,.62);}
+.dclr{background:rgba(2,2,4,.7);border:1px solid rgba(88,101,242,.25);padding:16px 26px;display:inline-flex;align-items:center;gap:14px;margin-bottom:24px;flex-wrap:wrap;justify-content:center;}
+.dclrt{font-family:'Share Tech Mono',monospace;font-size:15px;color:var(--white);letter-spacing:2px;}
+.dccp{font-family:'Anton',sans-serif;font-size:11px;letter-spacing:3px;background:transparent;color:#5865F2;border:1px solid rgba(88,101,242,.4);padding:7px 14px;cursor:pointer;transition:all .2s;}
+.dccp:hover{background:#5865F2;color:#fff;}
+.dccp.ok{background:#16a34a;border-color:#16a34a;color:#fff;}
+.dcw{background:rgba(232,25,44,.06);border:1px solid rgba(232,25,44,.18);padding:12px 20px;font-family:'Share Tech Mono',monospace;font-size:10px;color:rgba(232,25,44,.75);letter-spacing:2px;line-height:1.9;max-width:460px;margin:0 auto;}
+
+/* OWNERS */
+.or{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-top:48px;}
+.oc{background:var(--card);border:1px solid var(--border);padding:40px 48px;text-align:center;min-width:250px;position:relative;overflow:hidden;transition:all .3s;}
+.oc::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(232,25,44,.05) 0%,transparent 55%);opacity:0;transition:opacity .3s;}
+.oc:hover::before{opacity:1;}
+.oc:hover{border-color:rgba(232,25,44,.35);transform:translateY(-5px);}
+.oav{width:82px;height:82px;background:linear-gradient(135deg,#3a0710,#1a1a2e);margin:0 auto 16px;display:flex;align-items:center;justify-content:center;font-size:36px;clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);}
+.orl{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:4px;color:var(--red);margin-bottom:6px;}
+.onm{font-family:'Anton',sans-serif;font-size:30px;letter-spacing:5px;margin-bottom:8px;}
+.ods{font-size:13px;color:var(--muted2);line-height:1.65;}
+.ots{display:flex;gap:5px;justify-content:center;margin-top:13px;flex-wrap:wrap;}
+.ot{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:2px;padding:3px 9px;border:1px solid;}
+.ot.r{color:var(--red);border-color:rgba(232,25,44,.3);}
+.ot.g{color:var(--gold2);border-color:rgba(232,184,75,.3);}
+
+/* FOOTER */
+footer{background:var(--dark);border-top:1px solid var(--border);padding:52px 56px 34px;text-align:center;}
+.flog{font-family:'Anton',sans-serif;font-size:46px;letter-spacing:7px;margin-bottom:5px;}
+.flog span{color:var(--red);}
+.ftag{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:5px;color:var(--muted);margin-bottom:26px;}
+.flks{display:flex;gap:30px;justify-content:center;flex-wrap:wrap;margin-bottom:26px;}
+.flks a{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s;}
+.flks a:hover{color:var(--red);}
+.fcp{font-family:'Share Tech Mono',monospace;font-size:10px;color:rgba(74,74,96,.4);letter-spacing:1px;}
+
+/* REVEAL */
+.rev{opacity:0;transform:translateY(16px);transition:opacity .55s ease,transform .55s ease;}
+.rev.v{opacity:1;transform:translateY(0);}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  nav,nav.stuck{padding:13px 20px;}
+  .nlinks{display:none;}
+  .sec,.sdf,.dcs{padding:58px 20px;}
+  .ag{grid-template-columns:1fr;}
+  .vg{grid-template-columns:1fr;}
+  .wg{grid-template-columns:1fr 1fr;}
+  .igr{grid-template-columns:repeat(2,1fr);}
+  .fg{grid-template-columns:1fr 1fr;}
+  .rg{grid-template-columns:1fr;}
+  .jg{grid-template-columns:1fr 1fr;}
+  .gg{grid-template-columns:1fr 1fr;}
+  .stats{padding:22px 20px;}
+  footer{padding:34px 20px 22px;}
+  .gang-grid{grid-template-columns:1fr!important;}
+}
+</style>
+</head>
+<body>
+
+<!-- GATE -->
+<div id="gate">
+  <div id="gbg"></div>
+  <div class="gc">
+    <div class="gey">⚠ Erişim Kısıtlı — Kimlik Doğrulama Gerekli</div>
+    <div class="glogo"><span class="s">WASH</span><span class="r">ING</span><br><span class="r">TON</span>&nbsp;<span class="s">RP</span></div>
+    <div class="gtag">Sokakların Dili &nbsp;·&nbsp; Kural Yok, Sonuç Var</div>
+    <div class="gcard">
+      <span class="gdi">
+        <svg width="40" height="30" viewBox="0 0 18 14" fill="none"><path d="M15.24 1.18A14.87 14.87 0 0011.43 0c-.18.33-.39.77-.53 1.12a13.7 13.7 0 00-4.1 0C6.65.77 6.43.33 6.24 0A14.83 14.83 0 002.43 1.18C.35 4.28-.21 7.3.07 10.28c1.52 1.14 3 1.83 4.45 2.28.36-.5.68-1.04.96-1.6a9.7 9.7 0 01-1.52-.74c.13-.09.25-.19.37-.29a10.63 10.63 0 009.17 0c.12.1.25.2.37.29-.49.29-1 .54-1.53.74.28.56.6 1.1.96 1.6 1.46-.45 2.94-1.14 4.45-2.28.35-3.5-.6-6.5-2.51-9.1zM6 8.44c-.88 0-1.6-.83-1.6-1.84s.7-1.85 1.6-1.85c.9 0 1.62.84 1.6 1.85 0 1-.7 1.84-1.6 1.84zm5.67 0c-.88 0-1.6-.83-1.6-1.84s.7-1.85 1.6-1.85c.9 0 1.62.84 1.6 1.85 0 1-.7 1.84-1.6 1.84z" fill="#5865F2"/></svg>
+      </span>
+      <div class="gtitle">Discord Doğrulama</div>
+      <div class="gdesc">Washington Roleplay'e erişmek için Discord sunucumuza katılmış olman gerekiyor. Kullanıcı adını gir ve devam et.</div>
+      <input class="ginp" id="gInp" type="text" placeholder="Discord kullanıcı adın..." autocomplete="off"/>
+      <div class="gerr" id="gErr">⚠ Geçerli bir kullanıcı adı gir.</div>
+      <button class="gbtn" onclick="enterGate()">▶ &nbsp; DEVAM ET</button>
+      <div class="gnote">Henüz katılmadın mı? → <a href="https://discord.gg/washingtonrp" target="_blank">discord.gg/washingtonrp</a><br>Discord'a katılmadan sunucuya bağlanamazsın.</div>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nlogo">W<span>.</span>RP</a>
+  <ul class="nlinks">
+    <li><a href="#hakkinda">Hakkında</a></li>
+    <li><a href="#gorseller">Görseller</a></li>
+    <li><a href="#araclar">Araçlar</a></li>
+    <li><a href="#silahlar">Silahlar</a></li>
+    <li><a href="#fraksiyonlar">Fraksiyonlar</a></li>
+    <li><a href="#discord">Discord</a></li>
+  </ul>
+  <a href="#discord" class="ndcb">
+    <svg width="16" height="12" viewBox="0 0 18 14" fill="none"><path d="M15.24 1.18A14.87 14.87 0 0011.43 0c-.18.33-.39.77-.53 1.12a13.7 13.7 0 00-4.1 0C6.65.77 6.43.33 6.24 0A14.83 14.83 0 002.43 1.18C.35 4.28-.21 7.3.07 10.28c1.52 1.14 3 1.83 4.45 2.28.36-.5.68-1.04.96-1.6a9.7 9.7 0 01-1.52-.74c.13-.09.25-.19.37-.29a10.63 10.63 0 009.17 0c.12.1.25.2.37.29-.49.29-1 .54-1.53.74.28.56.6 1.1.96 1.6 1.46-.45 2.94-1.14 4.45-2.28.35-3.5-.6-6.5-2.51-9.1zM6 8.44c-.88 0-1.6-.83-1.6-1.84s.7-1.85 1.6-1.85c.9 0 1.62.84 1.6 1.85 0 1-.7 1.84-1.6 1.84zm5.67 0c-.88 0-1.6-.83-1.6-1.84s.7-1.85 1.6-1.85c.9 0 1.62.84 1.6 1.85 0 1-.7 1.84-1.6 1.84z" fill="white"/></svg>
+    Discord
+  </a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hbg"></div><div class="hov"></div><div class="hsc"></div><div class="hvig"></div><div class="hline"></div>
+  <div id="pts"></div>
+  <div class="hc">
+    <div class="hpre">⚠ Türkiye'nin En Gerçekçi Şehir Roleplay Deneyimi</div>
+    <h1 class="htitle">WASH<span class="r">ING</span><br><span class="r">TON</span></h1>
+    <p class="hsub">Kural Koy &nbsp;·&nbsp; Kır &nbsp;·&nbsp; Sonuçlarına Katlan</p>
+    <div class="hctas">
+      <a href="#discord" class="btn btn-dc">
+        <svg width="16" height="12" viewBox="0 0 18 14" fill="none"><path d="M15.24 1.18A14.87 14.87 0 0011.43 0c-.18.33-.39.77-.53 1.12a13.7 13.7 0 00-4.1 0C6.65.77 6.43.33 6.24 0A14.83 14.83 0 002.43 1.18C.35 4.28-.21 7.3.07 10.28c1.52 1.14 3 1.83 4.45 2.28.36-.5.68-1.04.96-1.6a9.7 9.7 0 01-1.52-.74c.13-.09.25-.19.37-.29a10.63 10.63 0 009.17 0c.12.1.25.2.37.29-.49.29-1 .54-1.53.74.28.56.6 1.1.96 1.6 1.46-.45 2.94-1.14 4.45-2.28.35-3.5-.6-6.5-2.51-9.1zM6 8.44c-.88 0-1.6-.83-1.6-1.84s.7-1.85 1.6-1.85c.9 0 1.62.84 1.6 1.85 0 1-.7 1.84-1.6 1.84zm5.67 0c-.88 0-1.6-.83-1.6-1.84s.7-1.85 1.6-1.85c.9 0 1.62.84 1.6 1.85 0 1-.7 1.84-1.6 1.84z" fill="white"/></svg>
+        Discord'a Katıl
+      </a>
+      <a href="#hakkinda" class="btn btn-ghost">Keşfet</a>
+    </div>
+  </div>
+  <div class="sind"><span>KAYDIR</span><div class="sline"></div></div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat"><div class="sn" data-target="247">0</div><div class="sl">Toplam Üye</div></div>
+  <div class="stat"><div class="sn" data-target="6">0</div><div class="sl">Fraksiyon</div></div>
+  <div class="stat"><div class="sn" data-target="12">0</div><div class="sl">Meslek Türü</div></div>
+  <div class="stat"><div class="sn" data-target="24">0</div><div class="sl">Araç Modeli</div></div>
+  <div class="stat"><div class="sn" data-target="2">0</div><div class="sl">Büyük Çete</div></div>
+</div>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="tkr">
+    &nbsp;&nbsp;&nbsp;⚠ Washington'da suç işlemek serbest — sonuçları değil &nbsp;•&nbsp; Daltons ve ZirveX sokaklara hükmediyor &nbsp;•&nbsp; Para kazan, iş yeri kur, kartel oluştur &nbsp;•&nbsp; Banka soygunundan araç kaçakçılığına tam özgürlük &nbsp;•&nbsp; Discord'a katılmadan sunucuya giremezsin &nbsp;•&nbsp; xShawou &amp; Giovanni yönetiminde premium RP &nbsp;•&nbsp;
+    &nbsp;&nbsp;&nbsp;⚠ Washington'da suç işlemek serbest — sonuçları değil &nbsp;•&nbsp; Daltons ve ZirveX sokaklara hükmediyor &nbsp;•&nbsp; Para kazan, iş yeri kur, kartel oluştur &nbsp;•&nbsp; Banka soygunundan araç kaçakçılığına tam özgürlük &nbsp;•&nbsp; Discord'a katılmadan sunucuya giremezsin &nbsp;•&nbsp; xShawou &amp; Giovanni yönetiminde premium RP &nbsp;•&nbsp;
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="sec" id="hakkinda">
+  <div class="slbl">Sunucu Hikayesi</div>
+  <div class="stit">HOŞGELDIN,<br><span class="hl">WASHINGTON'A</span></div>
+  <div class="ag rev">
+    <div class="at">
+      <p>Washington, <strong>her kararın bir bedeli olan</strong> bir şehir. Buraya girenler iki yoldan birini seçer: yasaların koruması altında dürüst bir yaşam sürmek ya da şehrin karanlık sokaklarında <em>kendi kurallarını yazmak.</em></p>
+      <div class="pq">"Bu şehirde herkes bir rol oynar. Peki seninki ne olacak?"</div>
+      <p>Forge altyapısıyla inşa edilen Washington, <strong>tam fonksiyonel ekonomi sistemi</strong>, gerçekçi araç ve silah modları, özgür roleplay kuralları ve canlı fraksiyon yapısıyla Türkiye'nin en kapsamlı city RP deneyimini sunuyor.</p>
+      <p>Polisler suçluları kovalıyor, çeteler bölge savaşlarına giriyor, tüccarlar kazanıyor. <em>Şehir hazır — hikaye seninle başlıyor.</em></p>
+    </div>
+    <div>
+      <div class="aimg">
+        <img src="images/city.jpg" alt="Washington City" loading="lazy"/>
+        <div class="aiov"></div>
+        <div class="ailbl"><div class="ait">// ŞEHİR MERKEZİ</div><div class="ain">WASHINGTON CITY</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<div class="sdf" id="gorseller" style="padding-top:0;">
+<div class="sec" style="padding-bottom:0;"><div class="slbl">Oyun İçi Sahneler</div><div class="stit">SAHNELER &amp;<br><span class="hl">ANLAR</span></div></div>
+<div style="max-width:1200px;margin:0 auto;padding:0 56px 96px;">
+<div class="gg rev">
+  <div class="gi"><img src="images/g1.jpg" alt="Polis" loading="lazy"/><div class="gov"></div><div class="glbl"><div class="gt">// POLİS BİRİMİ</div><div class="gn">WASHINGTON PD</div></div></div>
+  <div class="gi"><img src="images/g2.jpg" alt="Karanlık" loading="lazy"/><div class="gov"></div><div class="glbl"><div class="gt">// İLLEGAL OPERASYON</div><div class="gn">SOKAK OPERASYONu</div></div></div>
+  <div class="gi"><img src="images/g3.jpg" alt="Para" loading="lazy"/><div class="gov"></div><div class="glbl"><div class="gt">// EKONOMİ</div><div class="gn">KARA PARA TİCARETİ</div></div></div>
+  <div class="gi"><img src="images/g4.jpg" alt="Gece" loading="lazy"/><div class="gov"></div><div class="glbl"><div class="gt">// ÇETE BÖLGESİ</div><div class="gn">GECENİN KARANLIĞI</div></div></div>
+  <div class="gi"><img src="images/g5.jpg" alt="Araç" loading="lazy"/><div class="gov"></div><div class="glbl"><div class="gt">// ARAÇ KOVALAMACASI</div><div class="gn">YÜKSEK HIZ TAKİBİ</div></div></div>
+  <div class="gi"><img src="images/g6.jpg" alt="Şehir" loading="lazy"/><div class="gov"></div><div class="glbl"><div class="gt">// GECE HAYATI</div><div class="gn">WASHINGTON GECELERİ</div></div></div>
+</div>
+</div>
+</div>
+
+<!-- VEHICLES -->
+<section class="sec" id="araclar">
+  <div class="slbl">Araçlar</div>
+  <div class="stit">ARAÇLAR &amp;<br><span class="hl">ULAŞIM</span></div>
+  <p style="font-size:16px;font-weight:300;color:var(--muted2);max-width:520px;line-height:1.85;">Washington sokaklarında yüzlerce araç modeli seni bekliyor. Yasal ya da çalıntı — seçim senin.</p>
+  <div class="vg rev">
+    <div class="vc">
+      <div class="vi"><img src="images/v1.jpg" alt="Spor" loading="lazy"/><div class="viov"></div></div>
+      <div class="vinfo"><div class="vbr">// SÜPER SPOR</div><div class="vnm">SPOR SEDAN</div><div class="vds">Washington sokaklarının en hızlı araçlarından. Polis kovalamacasında vazgeçilmez. Satın alınabilir ya da çalınabilir.</div><div class="vtgs"><span class="vtg">HIZ: MAX</span><span class="vtg">KAÇIŞ: ★★★★★</span><span class="vtg">ŞEHİR İÇİ</span></div></div>
+    </div>
+    <div class="vc">
+      <div class="vi"><img src="images/v2.jpg" alt="Polis" loading="lazy"/><div class="viov"></div></div>
+      <div class="vinfo"><div class="vbr">// POLİS ARACI</div><div class="vnm">POLİS SUV</div><div class="vds">Washington PD'nin devriye aracı. Siren, ışık barı ve gelişmiş radyo sistemi. Sadece PD kullanabilir.</div><div class="vtgs"><span class="vtg">POLİS ÖZEL</span><span class="vtg">SİREN: AKTİF</span><span class="vtg">DEVRİYE</span></div></div>
+    </div>
+    <div class="vc">
+      <div class="vi"><img src="images/v3.jpg" alt="Motorsiklet" loading="lazy"/><div class="viov"></div></div>
+      <div class="vinfo"><div class="vbr">// MOTOSIKLET</div><div class="vnm">STREET FIGHTER</div><div class="vds">Dar sokaklarda rakipsiz manevra. Kaçakçıların ve çete üyelerinin en sevdiği ulaşım aracı.</div><div class="vtgs"><span class="vtg">ÇETE ARACI</span><span class="vtg">MANEVRALI</span><span class="vtg">HIZ: ★★★★</span></div></div>
+    </div>
+    <div class="vc">
+      <div class="vi"><img src="images/v4.jpg" alt="Truck" loading="lazy"/><div class="viov"></div></div>
+      <div class="vinfo"><div class="vbr">// AĞIR TAŞIT</div><div class="vnm">PICKUP TRUCK</div><div class="vds">Yük taşıma ve baskın operasyonları için ideal. Kartel lojistiğinin ve silah kaçakçılığının vazgeçilmezi.</div><div class="vtgs"><span class="vtg">LOJİSTİK</span><span class="vtg">OFF-ROAD</span><span class="vtg">DAYANIKLI</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- WEAPONS -->
+<div class="sdf" id="silahlar">
+<div class="sec" style="max-width:1200px;margin:0 auto;">
+  <div class="slbl">Silah Sistemi</div>
+  <div class="stit">SİLAHLAR &amp;<br><span class="hl">DONANIM</span></div>
+  <p style="font-size:16px;font-weight:300;color:var(--muted2);max-width:520px;line-height:1.85;margin-bottom:0;">Ruhsatlı alabilirsin, kaçak yoldan da edinebilirsin. Her kurşunun bir bedeli var.</p>
+  <div class="wg rev">
+    <div class="wc"><div class="wim"><img src="images/w1.jpg" alt="Tabanca" loading="lazy"/><div class="wimov"></div></div><div class="wb"><div class="wnm">TABANCA</div><div class="wtp">// KISA SİLAH</div><div class="wds">Standart başlangıç silahı. Yasal ve kaçak versiyonu mevcut. Washington'da herkesin cebinde.</div><span class="wlg ly">✔ RUHSATLI ALINABİLİR</span></div></div>
+    <div class="wc"><div class="wim"><img src="images/w2.jpg" alt="Tüfek" loading="lazy"/><div class="wimov"></div></div><div class="wb"><div class="wnm">SALDIRI TÜFEĞİ</div><div class="wtp">// UZUN SİLAH</div><div class="wds">Kartel operasyonlarının temel ateş gücü. Yüksek hasar, geniş etkili. Yalnızca kaçak yoldan.</div><span class="wlg ln">✘ YALNIZCA KAÇAK</span></div></div>
+    <div class="wc"><div class="wim"><img src="images/w3.jpg" alt="Pompalı" loading="lazy"/><div class="wimov"></div></div><div class="wb"><div class="wnm">AV TÜFEĞİ</div><div class="wtp">// POMPALITÜFEK</div><div class="wds">Yakın mesafe baskınları için. Banka soygunlarında en çok tercih edilen silahtır.</div><span class="wlg ln">✘ YALNIZCA KAÇAK</span></div></div>
+    <div class="wc"><div class="wim"><img src="images/w4.jpg" alt="Sniper" loading="lazy"/><div class="wimov"></div></div><div class="wb"><div class="wnm">KESKİN NİŞANCI</div><div class="wtp">// UZAK MESAFE</div><div class="wds">Uzak mesafe eliminasyon. Sadece üst düzey çete üyeleri ve özel operatörler kullanır.</div><span class="wlg ln">✘ YALNIZCA KAÇAK</span></div></div>
+    <div class="wc"><div class="wim"><img src="images/w5.jpg" alt="Taser" loading="lazy"/><div class="wimov"></div></div><div class="wb"><div class="wnm">POLİS TAZER</div><div class="wtp">// ELEKTRİKLİ SİLAH</div><div class="wds">Washington PD'nin standart non-lethal ekipmanı. Sadece onaylı polisler kullanabilir.</div><span class="wlg ly">✔ POLİS ÖZEL</span></div></div>
+    <div class="wc"><div class="wim"><img src="images/w6.jpg" alt="SMG" loading="lazy"/><div class="wimov"></div></div><div class="wb"><div class="wnm">SAKLANABİLİR SMG</div><div class="wtp">// KOMPAKT MAKİNALI</div><div class="wds">Kompakt yapısıyla şehir içi operasyonlarda tercih edilir. Yüksek ateş hızı, kolay gizlenebilir.</div><span class="wlg ln">✘ YALNIZCA KAÇAK</span></div></div>
+  </div>
+</div>
+</div>
+
+<!-- ILLEGAL -->
+<section class="sec">
+  <div class="slbl">Karanlık Taraf</div>
+  <div class="stit">İLLEGAL<br><span class="hl">FAALİYETLER</span></div>
+  <p style="font-size:16px;font-weight:300;color:var(--muted2);max-width:560px;line-height:1.85;">Risk ne kadar yüksekse, kazanç o kadar büyük. Ama Washington'da her hatanın bir bedeli var.</p>
+  <div class="igr rev">
+    <div class="ic" style="--r:90%"><span class="ici">💊</span><div class="icn">Uyuşturucu</div><div class="icr">RİSK: KRİTİK</div><div class="icb"></div></div>
+    <div class="ic" style="--r:95%"><span class="ici">🏦</span><div class="icn">Banka Soygunu</div><div class="icr">RİSK: MAKSİMUM</div><div class="icb"></div></div>
+    <div class="ic" style="--r:75%"><span class="ici">🔫</span><div class="icn">Silah Kaçakçılığı</div><div class="icr">RİSK: YÜKSEK</div><div class="icb"></div></div>
+    <div class="ic" style="--r:50%"><span class="ici">🚗</span><div class="icn">Araç Çalma</div><div class="icr">RİSK: ORTA</div><div class="icb"></div></div>
+    <div class="ic" style="--r:80%"><span class="ici">🩸</span><div class="icn">Rehin Alma</div><div class="icr">RİSK: YÜKSEK</div><div class="icb"></div></div>
+    <div class="ic" style="--r:45%"><span class="ici">💵</span><div class="icn">Kara Para Aklama</div><div class="icr">RİSK: DÜŞÜK</div><div class="icb"></div></div>
+    <div class="ic" style="--r:70%"><span class="ici">🕶️</span><div class="icn">Haraç & Şantaj</div><div class="icr">RİSK: YÜKSEK</div><div class="icb"></div></div>
+    <div class="ic" style="--r:60%"><span class="ici">🎭</span><div class="icn">Sahte Kimlik</div><div class="icr">RİSK: ORTA</div><div class="icb"></div></div>
+  </div>
+</section>
+
+<!-- FACTIONS -->
+<div class="sdf" id="fraksiyonlar">
+<div class="sec" style="max-width:1200px;margin:0 auto;">
+  <div class="slbl">Fraksiyonlar</div>
+  <div class="stit">TARAFINI<br><span class="hl">SEÇ</span></div>
+
+  <!-- GANG LABEL -->
+  <div style="font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:5px;color:var(--red);text-transform:uppercase;margin-bottom:18px;margin-top:8px;display:flex;align-items:center;gap:12px;">
+    <span style="width:28px;height:1px;background:var(--red);display:inline-block;"></span>// WASHINGTON'IN İKİ BÜYÜK ÇETESİ
+  </div>
+
+  <!-- 2 GANGS -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:44px;" class="gang-grid rev">
+
+    <!-- DALTONS -->
+    <div class="fc gang-card" style="padding:34px 28px;">
+      <div class="gtop-line" style="background:linear-gradient(to right,var(--red),var(--gold2),transparent);"></div>
+      <span class="fe">💀</span>
+      <div class="gname">𝘿𝙖𝙡𝙩𝙤𝙣𝙨</div>
+      <div class="ftp cr">// AZİLİ SUÇLULAR &nbsp;·&nbsp; AKTİF ÇETE &nbsp;·&nbsp; GÜNEY BÖLGE</div>
+      <div class="fds" style="margin-bottom:16px;">Washington'ın en köklü ve en tehlikeli çetesi. Güney bölgesinin tartışmasız efendileri. Uyuşturucu, silah, rehin — her illegal işin arkasında onlar var. Kimse karşılarına geçmeye cesaret edemez.</div>
+      <div class="gcb"><div class="gcbl">KAPASİTE — MİN: 3 · MAKSİMUM: 6</div><div class="gcbr"><div class="gcbf" id="db" style="width:0%;"></div></div></div>
+      <div class="fsl" style="margin-top:10px;"><span class="sd f"></span><span class="sd f"></span><span class="sd f"></span><span class="sd"></span><span class="sd"></span><span class="sd"></span>&nbsp;3 DOLU — 3 BOŞ</div>
+    </div>
+
+    <!-- ZIRVE X -->
+    <div class="fc gangZ" style="padding:34px 28px;">
+      <div class="gtop-line" style="background:linear-gradient(to right,var(--gold),var(--gold2),transparent);"></div>
+      <span class="fe">⚡</span>
+      <div class="gnameZ">𝙕𝙞𝙧𝙫𝙚𝙓</div>
+      <div class="ftp gn">// AZİLİ SUÇLULAR &nbsp;·&nbsp; AKTİF ÇETE &nbsp;·&nbsp; KUZEY BÖLGE</div>
+      <div class="fds" style="margin-bottom:16px;">Kuzeyden yükselen ve Washington'ı köklü bir şekilde sarsan güç. Hızlı büyüyen, acımasız, stratejik. Silah ticareti ve bölge kontrolünde Daltons ile sürekli gerilim. Zirveye çıkma yolunda hiçbir şey onları durduramaz.</div>
+      <div class="gcb"><div class="gcbl" style="color:var(--gold);">KAPASİTE — MİN: 3 · MAKSİMUM: 6</div><div class="gcbr"><div class="gcbf" id="zb" style="width:0%;background:linear-gradient(to right,var(--gold),var(--gold2));"></div></div></div>
+      <div class="fsl" style="margin-top:10px;color:var(--gold);"><span class="sd f" style="background:var(--gold);"></span><span class="sd f" style="background:var(--gold);"></span><span class="sd"></span><span class="sd"></span><span class="sd"></span><span class="sd"></span>&nbsp;2 DOLU — 4 BOŞ</div>
+    </div>
+  </div>
+
+  <!-- OTHER FACTIONS LABEL -->
+  <div style="font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:5px;color:var(--muted2);text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;gap:12px;">
+    <span style="width:28px;height:1px;background:var(--muted);display:inline-block;"></span>// DİĞER FRAKSIYONLAR
+  </div>
+
+  <div class="fg rev">
+    <div class="fc"><span class="fe">🚔</span><div class="fn">Washington PD</div><div class="ftp lw">// POLİS TEŞKİLATI</div><div class="fds">Şehrin düzenini koruma altına almakla görevli. Gerçek hiyerarşi, yetki ve sorumluluk. Her gün çetelerle mücadele.</div><div class="fsl"><span class="sd"></span><span class="sd"></span><span class="sd"></span><span class="sd f"></span><span class="sd f"></span><span class="sd f"></span>&nbsp;MAKSİMUM: 6 KİŞİ</div></div>
+    <div class="fc"><span class="fe">⚕️</span><div class="fn">WRP Medical</div><div class="ftp cv">// SAĞLIK EKİBİ</div><div class="fds">Hastane ve acil müdahale. Polisi ya da çete üyesi olsun fark etmez — doktorlar bakar.</div><div class="fsl"><span class="sd"></span><span class="sd f"></span>&nbsp;MAKSİMUM: 2 KİŞİ</div></div>
+    <div class="fc"><span class="fe">🚑</span><div class="fn">Ambulans</div><div class="ftp cv">// ACİL MÜDAHALE</div><div class="fds">Sahadaki ilk müdahale ekibi. Banka soygunu, çatışma, kaza — kim ararsa arasın, onlar gelir.</div><div class="fsl"><span class="sd"></span><span class="sd f"></span>&nbsp;MAKSİMUM: 2 KİŞİ</div></div>
+    <div class="fc"><span class="fe">🏛️</span><div class="fn">Belediye</div><div class="ftp cv">// YÖNETİM</div><div class="fds">Şehrin altyapısı ve kamu hizmetleri. Legit görünen en kirli iş olabilir — ya da tam tersi.</div><div class="fsl"><span class="sd"></span><span class="sd"></span><span class="sd f"></span><span class="sd f"></span><span class="sd f"></span>&nbsp;MAKSİMUM: 5 KİŞİ</div></div>
+    <div class="fc"><span class="fe">⚖️</span><div class="fn">Adliye</div><div class="ftp lw">// YARGI</div><div class="fds">Savcı, avukat, hakim. Mahkeme sistemi aktif — yakalanırsan iyi bir avukat işine yarar.</div><div class="fsl"><span class="sd"></span><span class="sd"></span><span class="sd f"></span>&nbsp;MAKSİMUM: 3 KİŞİ</div></div>
+    <div class="fc"><span class="fe">🗞️</span><div class="fn">WRP Haber</div><div class="ftp cv">// BASIN</div><div class="fds">Her şeyi yaz, yayınla. Gazeteciler dokunulmaz mı? Washington'da hiçbir şey garanti değil.</div><div class="fsl"><span class="sd"></span><span class="sd"></span><span class="sd"></span><span class="sd f"></span>&nbsp;MAKSİMUM: 4 KİŞİ</div></div>
+  </div>
+</div>
+</div>
+
+<!-- RULES -->
+<section class="sec">
+  <div class="slbl">Kurallar</div>
+  <div class="stit">SINIRLAR &amp;<br><span class="hl">ÖZGÜRLÜKLER</span></div>
+  <div class="rg rev">
+    <div>
+      <div class="rch y">✔ İZİN VERİLEN</div>
+      <div class="rr"><span class="ri2">💚</span>RP kapsamında her türlü illegal faaliyet — gerçekçi ve mantıklı kaldığı sürece</div>
+      <div class="rr"><span class="ri2">💚</span>Fraksiyonlar arası savaş ve bölge çatışmaları — önceden bildirim şartıyla</div>
+      <div class="rr"><span class="ri2">💚</span>Polise karşı silahlı direniş — RP mantığı çerçevesinde</div>
+      <div class="rr"><span class="ri2">💚</span>Dükkan, ev ve iş yeri kurma, satma, devretme</div>
+      <div class="rr"><span class="ri2">💚</span>Banka soygunu — admin onaylı planla</div>
+      <div class="rr"><span class="ri2">💚</span>Çete kurma — en az 3, en fazla 6 üye</div>
+    </div>
+    <div>
+      <div class="rch n">✘ KESİNLİKLE YASAK</div>
+      <div class="rr"><span class="ri2">🔴</span>RP dışına çıkma (OOC) — sohbet kanalları dışında yasak</div>
+      <div class="rr"><span class="ri2">🔴</span>Haksız öldürme (RDM) — nedensiz, RP bağlantısız saldırı</div>
+      <div class="rr"><span class="ri2">🔴</span>Araç çıldırması (VDM) — araçla kasıtlı ezme</div>
+      <div class="rr"><span class="ri2">🔴</span>Meta-gaming — oyun dışı bilgiyi RP içinde kullanmak</div>
+      <div class="rr"><span class="ri2">🔴</span>Hack / hile / exploit — kalıcı ban</div>
+      <div class="rr"><span class="ri2">🔴</span>Admin taklit etme veya sunucu adına konuşma</div>
+    </div>
+  </div>
+</section>
+
+<!-- DISCORD -->
+<div class="dcs" id="discord">
+  <div class="dci">
+    <svg class="dc-icon-big" style="display:block;margin:0 auto 20px;" width="58" height="44" viewBox="0 0 18 14" fill="none"><path d="M15.24 1.18A14.87 14.87 0 0011.43 0c-.18.33-.39.77-.53 1.12a13.7 13.7 0 00-4.1 0C6.65.77 6.43.33 6.24 0A14.83 14.83 0 002.43 1.18C.35 4.28-.21 7.3.07 10.28c1.52 1.14 3 1.83 4.45 2.28.36-.5.68-1.04.96-1.6a9.7 9.7 0 01-1.52-.74c.13-.09.25-.19.37-.29a10.63 10.63 0 009.17 0c.12.1.25.2.37.29-.49.29-1 .54-1.53.74.28.56.6 1.1.96 1.6 1.46-.45 2.94-1.14 4.45-2.28.35-3.5-.6-6.5-2.51-9.1zM6 8.44c-.88 0-1.6-.83-1.6-1.84s.7-1.85 1.6-1.85c.9 0 1.62.84 1.6 1.85 0 1-.7 1.84-1.6 1.84zm5.67 0c-.88 0-1.6-.83-1.6-1.84s.7-1.85 1.6-1.85c.9 0 1.62.84 1.6 1.85 0 1-.7 1.84-1.6 1.84z" fill="#5865F2"/></svg>
+    <div class="dcbdg">● DİSCORD SUNUCUSU AKTİF</div>
+    <div class="dctit">DİSCORD'A<br><span>KATILMADAN</span><br>GİREMEZSİN</div>
+    <div class="dcdesc">Washington Roleplay tamamen Discord tabanlı çalışır. Sunucuya bağlanmak, karakter başvurusu ve fraksiyon üyeliği için Discord zorunludur.</div>
+    <div class="dcfs">
+      <div class="dcf">📋 Karakter Başvurusu</div>
+      <div class="dcf">🔫 Fraksiyon Kanalları</div>
+      <div class="dcf">📢 Duyurular</div>
+      <div class="dcf">⚖️ Destek & Şikayet</div>
+      <div class="dcf">🎮 Mod Paketi</div>
+    </div>
+    <div class="dclr">
+      <div class="dclrt" id="dcLnk">discord.gg/washingtonrp</div>
+      <button class="dccp" id="dcBtn" onclick="cpDC()">KOPYALA</button>
+    </div>
+    <a href="https://discord.gg/washingtonrp" target="_blank" class="btn btn-dc" style="margin-bottom:22px;">
+      <svg width="16" height="12" viewBox="0 0 18 14" fill="none"><path d="M15.24 1.18A14.87 14.87 0 0011.43 0c-.18.33-.39.77-.53 1.12a13.7 13.7 0 00-4.1 0C6.65.77 6.43.33 6.24 0A14.83 14.83 0 002.43 1.18C.35 4.28-.21 7.3.07 10.28c1.52 1.14 3 1.83 4.45 2.28.36-.5.68-1.04.96-1.6a9.7 9.7 0 01-1.52-.74c.13-.09.25-.19.37-.29a10.63 10.63 0 009.17 0c.12.1.25.2.37.29-.49.29-1 .54-1.53.74.28.56.6 1.1.96 1.6 1.46-.45 2.94-1.14 4.45-2.28.35-3.5-.6-6.5-2.51-9.1zM6 8.44c-.88 0-1.6-.83-1.6-1.84s.7-1.85 1.6-1.85c.9 0 1.62.84 1.6 1.85 0 1-.7 1.84-1.6 1.84zm5.67 0c-.88 0-1.6-.83-1.6-1.84s.7-1.85 1.6-1.85c.9 0 1.62.84 1.6 1.85 0 1-.7 1.84-1.6 1.84z" fill="white"/></svg>
+      Discord Sunucusuna Katıl
+    </a>
+    <div class="dcw">⚠ Discord'a katılmadan sunucu IP'si verilmez.<br>Katıl → Başvur → Onay Al → Bağlan.</div>
+  </div>
+</div>
+
+<!-- JOIN -->
+<section class="sec" id="katil">
+  <div class="slbl">Nasıl Katılırsın</div>
+  <div class="stit">4 ADIMDA<br><span class="hl">WASHINGTON</span></div>
+  <div class="jg rev">
+    <div class="js"><span class="ji">💬</span><div class="jt">Discord'a Katıl</div><div class="jd">discord.gg/washingtonrp adresine git. Bu zorunlu ilk adım.</div></div>
+    <div class="js"><span class="ji">📋</span><div class="jt">Başvur</div><div class="jd">#başvuru kanalından karakter formunu doldur. Onay 24 saat içinde gelir.</div></div>
+    <div class="js"><span class="ji">📦</span><div class="jt">Modları Kur</div><div class="jd">#mod-paketi kanalından hazır paketi indir, mods klasörüne at.</div></div>
+    <div class="js"><span class="ji">🎮</span><div class="jt">Bağlan & Oyna</div><div class="jd">Onay gelince bağlan, karakterini oluştur, Washington'a adım at.</div></div>
+  </div>
+</section>
+
+<!-- OWNERS -->
+<section class="sec">
+  <div class="slbl">Kurucu Ekip</div>
+  <div class="stit">SUNUCUNUN<br><span class="hl">SAHİPLERİ</span></div>
+  <div class="or rev">
+    <div class="oc"><div class="oav">👑</div><div class="orl">// CO-OWNER</div><div class="onm">xShawou</div><div class="ods">Sunucu altyapısı, mod yönetimi ve teknik denetim. Washington'ın mimarlarından biri.</div><div class="ots"><span class="ot r">KURUCU</span><span class="ot g">ADMIN</span></div></div>
+    <div class="oc"><div class="oav">🎯</div><div class="orl">// CO-OWNER</div><div class="onm">Giovanni</div><div class="ods">Roleplay kuralları, fraksiyon dengesi ve oyuncu deneyiminin mimarı. Sokağın sesi.</div><div class="ots"><span class="ot r">KURUCU</span><span class="ot g">ADMIN</span></div></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="flog">WASHINGTON <span>RP</span></div>
+  <div class="ftag">Sokakların Dili &nbsp;·&nbsp; Forge 1.20.1 &nbsp;·&nbsp; xShawou & Giovanni</div>
+  <div class="flks">
+    <a href="#hakkinda">Hakkında</a><a href="#gorseller">Görseller</a>
+    <a href="#araclar">Araçlar</a><a href="#silahlar">Silahlar</a>
+    <a href="#fraksiyonlar">Fraksiyonlar</a><a href="#discord">Discord</a><a href="#katil">Katıl</a>
+  </div>
+  <div class="fcp">© 2025 Washington Roleplay &nbsp;·&nbsp; xShawou & Giovanni &nbsp;·&nbsp; Tüm hakları saklıdır</div>
+</footer>
+
+<script>
+/* GATE */
+function enterGate(){
+  const v=document.getElementById('gInp').value.trim();
+  const e=document.getElementById('gErr');
+  if(!v||v.length<2){e.style.display='block';return;}
+  e.style.display='none';
+  const g=document.getElementById('gate');
+  g.style.transition='opacity .7s ease';g.style.opacity='0';
+  setTimeout(()=>g.style.display='none',720);
+  sessionStorage.setItem('wrp_u',v);
+}
+document.getElementById('gInp').addEventListener('keydown',e=>{if(e.key==='Enter')enterGate();});
+
+/* NAV */
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('stuck',scrollY>60));
+
+/* PARTICLES */
+const pc=document.getElementById('pts');
+for(let i=0;i<20;i++){
+  const p=document.createElement('div'),s=1+Math.random()*2;
+  p.className='pt';
+  p.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}vw;background:${Math.random()>.6?'#e8192c':'#c9922a'};animation-duration:${10+Math.random()*14}s;animation-delay:${Math.random()*14}s`;
+  pc.appendChild(p);
+}
+
+/* COUNTERS */
+function rC(){
+  document.querySelectorAll('[data-target]').forEach(el=>{
+    const t=+el.dataset.target;let c=0;
+    const iv=setInterval(()=>{c=Math.min(c+t/55,t);el.textContent=Math.floor(c);if(c>=t)clearInterval(iv);},28);
+  });
+}
+new IntersectionObserver(en=>{if(en[0].isIntersecting)rC();},{threshold:.5}).observe(document.querySelector('.stats'));
+
+/* REVEAL */
+const rs=document.querySelectorAll('.rev');
+const ro=new IntersectionObserver(en=>{en.forEach(e=>{if(e.isIntersecting){e.target.classList.add('v');ro.unobserve(e.target);}});},{threshold:.08});
+rs.forEach(r=>ro.observe(r));
+
+/* GANG BARS */
+new IntersectionObserver(en=>{
+  if(en[0].isIntersecting){
+    setTimeout(()=>{
+      const db=document.getElementById('db');
+      const zb=document.getElementById('zb');
+      if(db){db.style.transition='width .9s ease';db.style.width='50%';}
+      if(zb){zb.style.transition='width .9s ease';zb.style.width='33%';}
+    },300);
+  }
+},{threshold:.3}).observe(document.querySelector('.gang-card'));
+
+/* ILLEGAL BARS */
+new IntersectionObserver(en=>{
+  if(en[0].isIntersecting)document.querySelectorAll('.icb').forEach((b,i)=>setTimeout(()=>{b.style.transition='all .6s ease';},i*70));
+},{threshold:.3}).observe(document.querySelector('.igr'));
+
+/* COPY DC */
+function cpDC(){
+  navigator.clipboard.writeText('discord.gg/washingtonrp').then(()=>{
+    const b=document.getElementById('dcBtn');
+    b.textContent='✔ Kopyalandı!';b.classList.add('ok');
+    setTimeout(()=>{b.textContent='KOPYALA';b.classList.remove('ok');},2200);
+  });
+}
+</script>
+</body>
+</html>
